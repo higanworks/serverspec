@@ -51,7 +51,7 @@ build_script:
   - bundle install --jobs 3 --retry 3
   - net user
   - net localgroup
-  - net user appveyor p@ssword55
 
 test_script:
+  - net user appveyor %WINDOWS_PASSWORD% # set by webui
   - bundle exec rspec -fd --backtrace -r .\integration-test\winrm\spec_helper.rb .\integration-test\winrm
