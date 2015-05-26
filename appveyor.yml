@@ -21,13 +21,13 @@ matrix:
 clone_depth: 5
 
 cache:
-  - C:\Ruby193\lib\ruby\gems\1.9.1\gems
+  - C:\Ruby193\lib\ruby\gems\1.9.1
   - C:\Ruby193\bin
-  - C:\Ruby200\lib\ruby\gems\2.0.0\gems
+  - C:\Ruby200\lib\ruby\gems\2.0.0
   - C:\Ruby200\bin
-  - C:\Ruby21\lib\ruby\gems\2.1.0\gems
+  - C:\Ruby21\lib\ruby\gems\2.1.0
   - C:\Ruby21\bin
-  - C:\Ruby22\lib\ruby\gems\2.2.0\gems
+  - C:\Ruby22\lib\ruby\gems\2.2.0
   - C:\Ruby22\bin
 
 install:
@@ -47,6 +47,7 @@ install:
   - gem install --local bundler.gem --no-ri --no-rdoc ## appveyor often stops `gem install bundler`..?
 
 build_script:
+  - ruby -rfileutils -e 'FileUtils.rm_r(File.join([Gem.dir, "cache". "bundler"]) if Dir.exists?(File.join([Gem.dir, "cache". "bundler"])'
   - bundle install --jobs 3 --retry 3
   - net user
   - net localgroup
